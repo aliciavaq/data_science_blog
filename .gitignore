@@ -3,6 +3,11 @@ _gh_pages
 _site
 .ruby-version
 .jekyll-cache
+.bundle
+vendor
+
+# Resolved per machine by `bundle install` (see README)
+Gemfile.lock
 
 # Numerous always-ignore extensions
 *.diff

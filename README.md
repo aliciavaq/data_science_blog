@@ -6,67 +6,45 @@ This blog post template is based off of the [Lanyon](https://github.com/poole/la
 
 ## Installation
 
-### Ubuntu
+The blog is built with [Jekyll](https://jekyllrb.com) 4.4, which needs Ruby 3.2 or newer (tested with Ruby 3.3).
 
-1. Install Ruby (I'm using v3.2.5)
+### 1. Install Ruby
 
-```bash
-sudo apt install ruby-full
-```
+- **Ubuntu / Debian**:
 
-2. Once installed, add the following to your `.bashrc` or whatever terminal startup script you may use:
+  ```bash
+  sudo apt install ruby-full build-essential zlib1g-dev
+  ```
 
-```bash
-export GEM_HOME="$HOME/.gem"
-export PATH="$HOME/.gem/bin:$PATH"
-```
+  Then add the following to your `.bashrc` (or whatever terminal startup script you use) so gems install without `sudo`:
 
-3. Install bundler:
+  ```bash
+  export GEM_HOME="$HOME/gems"
+  export PATH="$HOME/gems/bin:$PATH"
+  ```
 
-```bash
-gem install jekyll bundler
-```
+  If `ruby -v` reports a version older than 3.2 (e.g. Ubuntu 22.04), install a newer Ruby with a version manager such as [mise](https://mise.jdx.dev) or [rbenv](https://github.com/rbenv/rbenv).
 
-4. Install dependencies:
+- **macOS**: do not use the Ruby that ships with macOS (it is too old). Follow the [Jekyll macOS guide](https://jekyllrb.com/docs/installation/macos/), or with [Homebrew](https://brew.sh):
+
+  ```bash
+  brew install ruby
+  ```
+
+  and add the path it prints to your `.zshrc`. Native gems are compiled with the Xcode Command Line Tools, so keep them up to date (`xcode-select --install`).
+
+- **Windows**: install Ruby+Devkit (x64) from [RubyInstaller](https://rubyinstaller.org/downloads/) and run the `ridk install` step at the end of the installer. See the [Jekyll Windows guide](https://jekyllrb.com/docs/installation/windows/).
+
+### 2. Install the dependencies
 
 From within this repository's root directory, run:
 
-```
+```bash
+gem install bundler
 bundle install
 ```
 
-### MacOS and Windows
-
-Mac and Windows users can find relevant guides for installing Jekyll here:
-
-- [Windows guide](https://jekyllrb.com/docs/installation/windows/)
-- [MacOS guide](https://jekyllrb.com/docs/installation/macos/)
-
-Additionally, you will need to do a few steps in Windows before serving you are able to serve your page locally. The steps below are Windows only, and you won't need them if you're on a Linux based machine. 
-
-### Windows Specific Steps:
-
-Before running these, you'd want to make sure your Ruby and Jekyll installations are functional.
-
-1. From within the repository's root directory, run: 
-
-```
-bundle add webrick
-```
-
-2. Open the `gemfile` present in the root directory of the repository, and add the following line at the end of the file: 
-
-```
-gem 'wdm', '>= 0.1.0'
-```
-
-3. Run the following command in the same directory: 
-
-```
-gem install wdm
-```
-
-You should be able to serve the page locally on Windows after these steps. 
+`bundle install` creates a `Gemfile.lock` resolved for your machine; it is ignored by git so each teammate can install on their own OS.
 
 ## Serving the Page Locally
 

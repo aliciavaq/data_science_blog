@@ -17,6 +17,12 @@ author:
 plugins:
   - jekyll-paginate
 
+# Repo files that should not be published with the site
+exclude:
+  - README.md
+  - LICENSE.md
+  - plotly_html.ipynb
+
 # Custom vars
 version:             1.1.0
 google_analytics_id: #UA-XXXX-Y
